@@ -1,9 +1,9 @@
 export interface Campaign {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   targetAgeMinMonths: number;
   targetAgeMaxMonths: number;
 }
