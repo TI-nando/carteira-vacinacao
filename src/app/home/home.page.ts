@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common'; // Necessário para usar *ngIf e
 import {
   IonHeader, IonToolbar, IonTitle, IonContent,
   IonSegment, IonSegmentButton, IonLabel, IonAvatar,
-  IonCard, IonItem, IonList, IonBadge, IonIcon
+  IonCard, IonItem, IonList, IonBadge, IonIcon,
+  IonCardContent
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { checkmarkCircle, time, warning } from 'ionicons/icons';
+import { checkmarkCircle, time, warning, megaphone } from 'ionicons/icons';
 
 import { DataService } from '../core/services/data.service';
 import { Child } from '../core/models/child.model';
+import { Campaign } from '../core/models/campaign';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,8 @@ import { Child } from '../core/models/child.model';
     CommonModule,
     IonHeader, IonToolbar, IonTitle, IonContent,
     IonSegment, IonSegmentButton, IonLabel, IonAvatar,
-    IonCard, IonItem, IonList, IonBadge, IonIcon
+    IonCard, IonItem, IonList, IonBadge, IonIcon,
+    IonCardContent
   ],
 })
 export class HomePage implements OnInit {
@@ -33,7 +36,7 @@ export class HomePage implements OnInit {
 
   // Injetamos o serviço de dados no construtor
   constructor(private dataService: DataService) {
-    addIcons({ checkmarkCircle, time, warning });
+    addIcons({ checkmarkCircle, time, warning, megaphone });
   }
 
   // Esse método roda automaticamente assim que a página é carregada
@@ -43,6 +46,11 @@ export class HomePage implements OnInit {
       if (this.children.length > 0) {
         this.selectedChild = this.children[0];
       }
+    });
+
+    // Campanhas Ativas
+    this.dataService.getCampaigns().subscribe((data) => {
+      this.campaign = data;
     });
   }
 

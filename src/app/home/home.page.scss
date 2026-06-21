@@ -38,3 +38,37 @@
 ion-icon {
   font-size: 24px;
 }
+
+/* Estilos para o Banner de Campanha */
+.banner-campanha {
+  margin: 0 0 24px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(254, 200, 104, 0.4); /* Sombra suave amarelada */
+  border-left: 6px solid var(--ion-color-tertiary); /* Um detalhe laranja na lateral */
+}
+
+.texto-escuro {
+  color: var(--ion-color-dark) !important;
+}
+
+.titulo-banner {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.conteudo-banner {
+  padding-top: 0;
+  font-size: 14px;
+}
+
+.data-campanha {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+}

@@ -5,6 +5,28 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  <div *ngIf="campaigns.length > 0">
+    <ion-card *ngFor="let campaign of campaigns" color="secondary" class="banner-campanha">
+
+      <ion-item color="secondary" lines="none">
+        <ion-icon slot="start" name="megaphone" color="dark"></ion-icon>
+        <ion-label>
+          <h2 class="texto-escuro titulo-banner">{{ campaign.title }}</h2>
+        </ion-label>
+      </ion-item>
+
+      <ion-card-content class="texto-escuro conteudo-banner">
+        <p>{{ campaign.description }}</p>
+        <div class="data-campanha">
+          <ion-icon name="time"></ion-icon>
+          <span>Válido até: {{ campaign.endDate }}</span>
+        </div>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
   <h2 class="titulo-secao">Meus Dependentes</h2>
 
   <ion-segment
