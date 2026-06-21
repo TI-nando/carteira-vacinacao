@@ -1,20 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" color="dark">Saúde Infantil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <h2 class="titulo-secao">Meus Dependentes</h2>
+  <p class="texto-descritivo">Teste de componentes visuais:</p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button color="primary" expand="block">Vacina em Dia (Verde)</ion-button>
+  <ion-button color="secondary" expand="block">Campanha (Amarelo)</ion-button>
+  <ion-button color="tertiary" expand="block"
+    >Vacina Atrasada (Laranja)</ion-button
+  >
 </ion-content>
