@@ -14,5 +14,5 @@ export interface VaccinationRecord {
   vaccineName: string; // Nome da vacina para exibição~.
   status: VaccineStatus; // Status da vacina para a criança.
   dueDate: string; // Data prevista para aplicação da vacina.
-  applicationDate?: string; // Data em que a vacina foi aplicada, se aplicável.
+  applicationDate: string; // Data em que a vacina foi aplicada, se aplicável.
 }

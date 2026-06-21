@@ -1,49 +1,46 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Child } from '../models/child.model';
-import { Campaign } from '../models/campaing.model';
+import { Campaign } from '../models/campaign';
 
 @Injectable({
-  providedIn: 'root' // Isso diz ao Angular que o serviço é global e único.
+  providedIn: 'root'
 })
-
 export class DataService {
 
-  // Simulando uma lista de crianças cadastradas.
   private mockChildren: Child[] = [
     {
       id: '1',
       name: 'Lucas Henrique Silva',
-      birthDate: '2025-06-01', // Tem cerca de 1 ano (12 meses) em junho/2026
-      photoUrl: 'assets/avatars/boy.png', // Caminho fictício para o avatar
+      birthDate: '2025-06-01',
+      photoUrl: 'assets/avatars/boy.png',
       vaccineRecords: [
         {
           vaccineId: 'v1',
           vaccineName: 'BCG (Tuberculose)',
           status: 'APLICADA',
           dueDate: '2025-06-01',
-          appliedDate: '2025-06-03' // Tomou logo após nascer (Cenário 1)
+          applicationDate: '2025-06-03' // CORRIGIDO AQUI
         },
         {
           vaccineId: 'v2',
           vaccineName: 'Hepatite B (1ª Dose)',
           status: 'APLICADA',
           dueDate: '2025-06-01',
-          appliedDate: '2025-06-03'
+          applicationDate: '2025-06-03' // CORRIGIDO AQUI
         },
         {
           vaccineId: 'v3',
           vaccineName: 'Tríplice Viral (Sarampo, Caxumba, Rubéola)',
-          status: 'ATRASADA', // Deveria tomar com 12 meses (Cenário 2)
-          dueDate: '2026-06-01',
-          // appliedDate fica vazio pois está atrasada e não foi aplicada
+          status: 'ATRASADA',
+          dueDate: '2026-06-01'
         }
       ]
     },
     {
       id: '2',
       name: 'Júlia Silva',
-      birthDate: '2026-04-15', // Bebê de aproximadamente 2 meses
+      birthDate: '2026-04-15',
       photoUrl: 'assets/avatars/girl.png',
       vaccineRecords: [
         {
@@ -51,19 +48,18 @@ export class DataService {
           vaccineName: 'BCG (Tuberculose)',
           status: 'APLICADA',
           dueDate: '2026-04-15',
-          appliedDate: '2026-04-17'
+          applicationDate: '2026-04-17' // CORRIGIDO AQUI
         },
         {
           vaccineId: 'v4',
           vaccineName: 'Pentavalente (1ª Dose)',
-          status: 'PENDENTE', // Está na idade de tomar, mas ainda dentro do prazo tolerável
+          status: 'PENDENTE',
           dueDate: '2026-06-15'
         }
       ]
     }
   ];
 
-  // Simulando campanhas de vacinação ativas (Atende ao Cenário 3)
   private mockCampaigns: Campaign[] = [
     {
       id: 'c1',
@@ -72,23 +68,16 @@ export class DataService {
       startDate: '2026-06-01',
       endDate: '2026-06-30',
       targetAgeMinMonths: 0,
-      targetAgeMaxMonths: 60 // Crianças de até 5 anos
+      targetAgeMaxMonths: 60
     }
   ];
 
   constructor() {}
 
-  /**
-   * Retorna a lista de todas as crianças do responsável
-   * Usamos 'Observable' e 'of()' para simular o comportamento assíncrono de um banco de dados real.
-   */
   getChildren(): Observable<Child[]> {
     return of(this.mockChildren);
   }
 
-  /**
-   * Retorna as campanhas de vacinação ativas
-   */
   getCampaigns(): Observable<Campaign[]> {
     return of(this.mockCampaigns);
   }
