@@ -1,2 +1,12 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+:root {
+  --ion-color-primary: #ABC270; /*Verde*/
+  --ion-color-secondary: #FEC868; /*Amarelo*/
+  --ion-color-tertiary: #FDA769; /*Laranja*/
+  --ion-color-dark: #473C33; /*Marrom*/
+
+  /* Classes utilitárias usadas pelo Ionic*/
+  .ion-color-primary { --ion-color-base: var(--ion-color-primary); }
+  .ion-color-secondary { --ion-color-base: var(--ion-color-secondary); }
+  .ion-color-tertiary { --ion-color-base: var(--ion-color-tertiary); }
+  .ion-color-dark { --ion-color-base: var(--ion-color-dark); }
+}
