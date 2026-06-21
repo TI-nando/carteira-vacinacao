@@ -34,6 +34,9 @@ export class HomePage implements OnInit {
   // Guarda qual criança está selecionada no momento
   selectedChild: Child | null = null;
 
+  // Guarda a lista de campanhas ativas
+  campaigns: Campaign[] = [];
+
   // Injetamos o serviço de dados no construtor
   constructor(private dataService: DataService) {
     addIcons({ checkmarkCircle, time, warning, megaphone });
@@ -50,11 +53,10 @@ export class HomePage implements OnInit {
 
     // Campanhas Ativas
     this.dataService.getCampaigns().subscribe((data) => {
-      this.campaign = data;
+      this.campaigns = data;
     });
   }
 
-  // Método chamado quando clicamos na aba de outro filho (Júlia)
   selectChild(child: Child) {
     this.selectedChild = child;
   }
