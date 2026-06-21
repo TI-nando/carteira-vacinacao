@@ -5,12 +5,32 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h2 class="titulo-secao">Meus Dependentes</h2>
-  <p class="texto-descritivo">Teste de componentes visuais:</p>
 
-  <ion-button color="primary" expand="block">Vacina em Dia (Verde)</ion-button>
-  <ion-button color="secondary" expand="block">Campanha (Amarelo)</ion-button>
-  <ion-button color="tertiary" expand="block"
-    >Vacina Atrasada (Laranja)</ion-button
-  >
+  <h2 class="titulo-secao">Meus Dependentes</h2>
+
+  <ion-segment [value]="selectedChild?.id" scrollable color="dark" class="seletor-filhos">
+
+    <ion-segment-button *ngFor="let child of children" [value]="child.id" (click)="selectChild(child)">
+      <ion-label color="dark">{{ child.name.split(' ')[0] }}</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <div *ngIf="selectedChild" class="perfil-container">
+
+    <ion-card class="cartao-perfil">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img [src]="selectedChild.photoUrl" onerror="this.src='https://ionicframework.com/docs/img/demos/avatar.svg'" />
+        </ion-avatar>
+
+        <ion-label color="dark">
+          <h2 style="font-weight: bold;">{{ selectedChild.name }}</h2>
+          <p>Nascimento: {{ selectedChild.birthDate }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    </div>
+
 </ion-content>
