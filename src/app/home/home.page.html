@@ -5,32 +5,78 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
   <h2 class="titulo-secao">Meus Dependentes</h2>
 
-  <ion-segment [value]="selectedChild?.id" scrollable color="dark" class="seletor-filhos">
-
-    <ion-segment-button *ngFor="let child of children" [value]="child.id" (click)="selectChild(child)">
+  <ion-segment
+    [value]="selectedChild?.id"
+    scrollable
+    color="dark"
+    class="seletor-filhos"
+  >
+    <ion-segment-button
+      *ngFor="let child of children"
+      [value]="child.id"
+      (click)="selectChild(child)"
+    >
       <ion-label color="dark">{{ child.name.split(' ')[0] }}</ion-label>
     </ion-segment-button>
-
   </ion-segment>
 
   <div *ngIf="selectedChild" class="perfil-container">
-
     <ion-card class="cartao-perfil">
       <ion-item lines="none">
         <ion-avatar slot="start">
-          <img [src]="selectedChild.photoUrl" onerror="this.src='https://ionicframework.com/docs/img/demos/avatar.svg'" />
+          <img
+            [src]="selectedChild.photoUrl"
+            onerror="
+              this.src = 'https://ionicframework.com/docs/img/demos/avatar.svg'
+            "
+          />
         </ion-avatar>
 
         <ion-label color="dark">
-          <h2 style="font-weight: bold;">{{ selectedChild.name }}</h2>
+          <h2 style="font-weight: bold">{{ selectedChild.name }}</h2>
           <p>Nascimento: {{ selectedChild.birthDate }}</p>
         </ion-label>
       </ion-item>
     </ion-card>
 
-    </div>
+    <div class="vacinas-container">
+      <h3 class="titulo-secao" style="margin-top: 24px">
+        Caderneta de Vacinação
+      </h3>
 
+      <ion-list class="lista-transparente">
+        <ion-item
+          *ngFor="let record of selectedChild.vaccineRecords"
+          class="vacina-item"
+          lines="full"
+        >
+          <ion-icon
+            slot="start"
+            [name]="record.status === 'APLICADA' ? 'checkmark-circle' : (record.status === 'PENDENTE' ? 'time' : 'warning')"
+            [color]="record.status === 'APLICADA' ? 'primary' : (record.status === 'PENDENTE' ? 'secondary' : 'tertiary')"
+          >
+          </ion-icon>
+
+          <ion-label color="dark">
+            <h2 style="font-weight: 600">{{ record.vaccineName }}</h2>
+            <p *ngIf="record.status === 'APLICADA'">
+              Aplicada em: {{ record.applicationDate }}
+            </p>
+            <p *ngIf="record.status !== 'APLICADA'">
+              Vencimento: {{ record.dueDate }}
+            </p>
+          </ion-label>
+
+          <ion-badge
+            slot="end"
+            [color]="record.status === 'APLICADA' ? 'primary' : (record.status === 'PENDENTE' ? 'secondary' : 'tertiary')"
+          >
+            {{ record.status }}
+          </ion-badge>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>
