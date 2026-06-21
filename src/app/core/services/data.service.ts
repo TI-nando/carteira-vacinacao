@@ -20,20 +20,21 @@ export class DataService {
           vaccineName: 'BCG (Tuberculose)',
           status: 'APLICADA',
           dueDate: '2025-06-01',
-          applicationDate: '2025-06-03' // CORRIGIDO AQUI
+          applicationDate: '2025-06-03'
         },
         {
           vaccineId: 'v2',
           vaccineName: 'Hepatite B (1ª Dose)',
           status: 'APLICADA',
           dueDate: '2025-06-01',
-          applicationDate: '2025-06-03' // CORRIGIDO AQUI
+          applicationDate: '2025-06-03'
         },
         {
           vaccineId: 'v3',
           vaccineName: 'Tríplice Viral (Sarampo, Caxumba, Rubéola)',
           status: 'ATRASADA',
-          dueDate: '2026-06-01'
+          dueDate: '2026-06-01',
+          applicationDate: ''
         }
       ]
     },
@@ -54,7 +55,8 @@ export class DataService {
           vaccineId: 'v4',
           vaccineName: 'Pentavalente (1ª Dose)',
           status: 'PENDENTE',
-          dueDate: '2026-06-15'
+          dueDate: '2026-06-15',
+          applicationDate: ''
         }
       ]
     }
